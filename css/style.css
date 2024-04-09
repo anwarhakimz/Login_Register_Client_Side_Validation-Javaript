@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: hsl(227, 22%, 16%);
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+.card {
+  width: 100%;
+  max-width: 450px;
+  background: linear-gradient(to bottom, hsl(0, 0%, 100%), hsl(0, 0%, 100%), hsl(0, 0%, 100%), hsl(45, 92%, 55%)) center/cover no-repeat;
+  padding-block: clamp(0.25rem, 10vw, 1.5rem);
+  border-radius: 0.5rem;
+  height: fit-content;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+
+.google {
+  width: 100%;
+  background: hsl(227, 22%, 16%);
+  padding: clamp(0.625rem, 3vw, 1rem) 1rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.or {
+  text-align: center;
+  position: relative;
+  user-select: none;
+}
+
+.or::before {
+  content: "";
+  width: 45%;
+  height: 1px;
+  background-color: hsl(227, 22%, 16%);
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.or::after {
+  content: "";
+  width: 45%;
+  height: 1px;
+  background-color: hsl(227, 22%, 16%);
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.error-login {
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+}
+
+label {
+  display: block;
+}
+
+.register-form {
+  display: none;
+}
+
+.register {
+  margin-top: clamp(0.25rem, 5vw, 1.5rem);
+  padding-top: 0.5rem;
+}
+
+.register-form.active {
+  display: block;
+}
+
+.login-form.hidden {
+  display: none;
+}
+
+.register-bot {
+  margin-top: 20px;
+}
+
+.d-flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.d-flex {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.container {
+  width: min(1280px, 100% - 1rem);
+  margin-inline: auto;
+  height: 100vh;
+}
+
+.select-none {
+  user-select: none;
+}
+
+.fs-body {
+  font-size: 1rem;
+}
+
+.fs-heading {
+  font-size: 2rem;
+}
+
+.ff-body {
+  font-family: "Inter", sans-serif;
+}
+
+.fw-reguler {
+  font-weight: 400;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.bg-neutral-100 {
+  background: hsl(0, 0%, 100%);
+}
+
+.bg-neutral-800 {
+  background: hsl(227, 22%, 16%);
+}
+
+.bg-gradient {
+  background: linear-gradient(165deg, hsl(206, 91%, 64%), hsl(275, 80%, 49%));
+}
+
+.clr-neutral-800 {
+  color: hsl(227, 22%, 16%);
+}
+
+.clr-neutral-100 {
+  color: hsl(0, 0%, 100%);
+}
+
+.clr-danger {
+  color: hsl(0, 66%, 51%);
+}
+
+.padding-bottom {
+  padding-bottom: 0.625rem;
+}
+
+.padding-block {
+  padding-block: clamp(0.25rem, 5vw, 1rem);
+}
+
+.padding-inline {
+  padding-inline: clamp(0.625rem, 5vw, 3rem);
+}
+
+.padding-top {
+  padding-top: 1rem;
+}
+
+.text-center {
+  text-align: center;
+  display: block;
+}
+
+/*# sourceMappingURL=style.css.map */

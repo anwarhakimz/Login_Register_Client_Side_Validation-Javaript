@@ -1,0 +1,20 @@
+@use "variable.scss" as *;
+
+@mixin flex($jc, $ac, $fd, $gap) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ac;
+  flex-direction: $fd;
+  gap: $gap;
+}
+
+@mixin long($bg) {
+  width: 100%;
+  background: $bg;
+  padding: clamp($size-1, 3vw, $size-2) $size-2;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}

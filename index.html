@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="public/vite.svg" type="image/x-icon" />
+    <title>Welcome To Vite</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body class="bg-gradient">
+    <main>
+      <div class="container">
+        <div class="wrapper">
+          <div class="card padding-inline">
+            <div class="login-form">
+              <h1 class="padding-bottom fw-semibold clr-neutral-800">Login</h1>
+              <p class="padding-block">
+                You can login with your registered account or quick login with
+                your Google account.
+              </p>
+              <button class="btn google padding">
+                <img src="Group.png" alt="google account" />
+                <p class="fw-semibold clr-neutral-100">Login with google</p>
+              </button>
+
+              <div class="or padding-block">or</div>
+              <form class="login" id="login-form">
+                <div class="username">
+                  <label class="padding-bottom fw-semibold" for="username"
+                    >Username</label
+                  >
+                  <input
+                    name="username"
+                    id="username-login"
+                    type="text"
+                    placeholder="Enter Your Username"
+                  />
+                </div>
+                <div class="password-login padding-block">
+                  <div class="d-flex-between">
+                    <label class="padding-bottom fw-semibold" for="password"
+                      >Password</label
+                    >
+                    <small class="forgot-password-btn padding-bottom fw-reguler"
+                      >Forgot Password!</small
+                    >
+                  </div>
+
+                  <input
+                    name="password"
+                    id="password-login"
+                    type="password"
+                    placeholder="Enter Your Password"
+                  />
+                  <i class="ph ph-ey ph-eye"></i>
+                </div>
+                <div class="d-flex">
+                  <input type="checkbox" />
+                  <span class="fw-reguler">Remember Me</span>
+                </div>
+
+                <div class="padding-block">
+                  <small
+                    class="error-login clr-danger padding-bottom fw-semibold"
+                    >Wrong username and password</small
+                  >
+                  <button class="btn login-submit clr-neutral-100 fw-semibold">
+                    Login
+                  </button>
+                  <small class="text-center padding-block fw-semibold"
+                    >Don’t have an account?
+                    <a class="btn-register-login"> Create one!</a></small
+                  >
+                </div>
+              </form>
+            </div>
+            <div class="register-form">
+              <h1 class="padding-bottom fw-semibold clr-neutral-800">
+                Register
+              </h1>
+              <p class="padding-block">Enter your user details below.</p>
+
+              <form class="register" id="register-form">
+                <div class="username-register">
+                  <label
+                    class="padding-bottom fw-semibold select-none"
+                    for="username-register"
+                    >Username</label
+                  >
+                  <input
+                    name="username-register"
+                    id="username-register"
+                    type="text"
+                    placeholder="Enter Your Username"
+                  />
+                  <small class="info"></small>
+                </div>
+                <div class="email-register padding-block">
+                  <label
+                    class="padding-bottom fw-semibold select-none"
+                    for="email-register"
+                    >Email</label
+                  >
+                  <input
+                    name="email-register"
+                    id="email-register"
+                    type="text"
+                    placeholder="Enter Your Email"
+                  />
+                  <small class="info"></small>
+                </div>
+                <div class="password-register padding select-none">
+                  <label
+                    class="padding-bottom fw-semibold"
+                    for="password-register"
+                    >Password</label
+                  >
+                  <input
+                    name="password-register"
+                    id="password-register"
+                    type="text"
+                    placeholder="Enter Your Password"
+                  />
+                  <small class="info"></small>
+                </div>
+                <div class="d-flex padding-top">
+                  <input type="checkbox" name="checkbox" id="checkbox" />
+                  <label class="fw-reguler select-none" for="checkbox"
+                    >Agree with terms and conditions</label
+                  >
+                </div>
+                <div class="padding-block">
+                  <small
+                    class="error-login clr-danger padding-bottom fw-semibold"
+                    >Check Agree with terms and conditions</small
+                  >
+                  <button class="btn login-submit clr-neutral-100 fw-semibold">
+                    Register
+                  </button>
+                  <small class="text-center padding-block fw-semibold"
+                    >Have an account?
+                    <a class="btn-login-register">Login!</a></small
+                  >
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

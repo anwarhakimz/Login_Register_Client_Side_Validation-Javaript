@@ -1,0 +1,190 @@
+@use "variable.scss" as *;
+@use "mixin.scss" as *;
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  font-family: $ff-body;
+  color: $clr-neutral-800;
+  font-size: clamp($fs-75, 2vw, $fs-1);
+}
+
+.card {
+  width: 100%;
+  max-width: 450px;
+  background: linear-gradient(
+      to bottom,
+      $clr-neutral-100,
+      $clr-neutral-100,
+      $clr-neutral-100,
+      $clr-accent-500
+    )
+    center/cover no-repeat;
+  padding-block: clamp($size-05, 10vw, $size-3);
+  border-radius: 0.5rem;
+  height: fit-content;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.wrapper {
+  @include flex(center, center, null, null);
+  height: inherit;
+}
+
+.google {
+  @include long($clr-neutral-800);
+}
+
+.or {
+  text-align: center;
+  position: relative;
+  user-select: none;
+}
+
+.or::before {
+  content: "";
+  width: 45%;
+  height: 1px;
+  background-color: $clr-neutral-800;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.or::after {
+  content: "";
+  width: 45%;
+  height: 1px;
+  background-color: $clr-neutral-800;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.error-login {
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+}
+
+label {
+  display: block;
+}
+
+.register-form {
+  display: none;
+}
+
+.register {
+  margin-top: clamp($size-05, 5vw, $size-3);
+  padding-top: 0.5rem;
+}
+
+.register-form.active {
+  display: block;
+}
+
+.login-form.hidden {
+  display: none;
+}
+
+.register-bot {
+  margin-top: 20px;
+}
+
+// utility
+.d-flex-between {
+  @include flex(space-between, center, null, null);
+}
+.d-flex {
+  @include flex(null, null, null, 0.5rem);
+}
+
+.container {
+  width: min($max-width, 100% - $padding);
+  margin-inline: auto;
+  height: 100vh;
+}
+.select-none {
+  user-select: none;
+}
+
+.fs-body {
+  font-size: $fs-1;
+}
+
+.fs-heading {
+  font-size: $fs-2;
+}
+
+.ff-body {
+  font-family: $ff-body;
+}
+
+.fw-reguler {
+  font-weight: $fw-reguler;
+}
+
+.fw-semibold {
+  font-weight: $fw-semi-bold;
+}
+
+.bg-neutral-100 {
+  background: $clr-neutral-100;
+}
+
+.bg-neutral-800 {
+  background: $clr-neutral-800;
+}
+
+.bg-gradient {
+  background: $clr-gradient;
+}
+
+.clr-neutral-800 {
+  color: $clr-neutral-800;
+}
+
+.clr-neutral-100 {
+  color: $clr-neutral-100;
+}
+
+.clr-danger {
+  color: $clr-accent-400;
+}
+
+.padding-bottom {
+  padding-bottom: $size-1;
+}
+
+.padding-block {
+  padding-block: clamp($size-05, 5vw, $size-2);
+}
+
+.padding-inline {
+  padding-inline: clamp($size-1, 5vw, $size-6);
+}
+
+.padding-top {
+  padding-top: $size-2;
+}
+
+.text-center {
+  text-align: center;
+  display: block;
+}

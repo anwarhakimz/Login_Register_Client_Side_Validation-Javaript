@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+$clr-primary-500: hsl(206, 91%, 64%);
+$clr-primary-400: hsl(275, 80%, 49%);
+
+$clr-neutral-100: hsl(0, 0%, 100%);
+$clr-neutral-800: hsl(227, 22%, 16%);
+
+$clr-accent-400: hsl(0, 66%, 51%);
+$clr-accent-700: hsl(137, 70%, 52%);
+$clr-accent-500: hsl(45, 92%, 55%);
+
+$ff-body: "Inter", sans-serif;
+
+$fw-reguler: 400;
+$fw-semi-bold: 600;
+
+$fs-75: 0.75rem;
+$fs-1: 1rem;
+$fs-2: 2rem;
+
+$clr-gradient: linear-gradient(165deg, $clr-primary-500, $clr-primary-400);
+
+$size-05: 0.25rem;
+$size-1: 0.625rem;
+$size-2: 1rem;
+$size-3: 1.5rem;
+$size-6: 3rem;
+
+$max-width: 1280px;
+$padding: $size-2;

@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+.input {
+  position: relative;
+}
+
+input:not([type=checkbox]) {
+  width: 100%;
+  background: hsl(0, 0%, 100%);
+  padding: clamp(0.625rem, 3vw, 1rem) 1rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  border: 2px solid hsl(227, 22%, 16%);
+  outline: none;
+}
+
+input#password-login {
+  padding: clamp(0.625rem, 3vw, 1rem) 1rem;
+  padding-right: 1.5rem;
+}
+
+input[type=checkbox] {
+  accent-color: hsl(227, 22%, 16%);
+}
+
+.password-login {
+  position: relative;
+}
+
+.ph-ey {
+  position: absolute;
+  bottom: 30%;
+  right: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.password-register,
+.email-register,
+.username-register {
+  position: relative;
+}
+
+.info {
+  position: absolute;
+  bottom: -15px;
+  left: 5px;
+}
+
+.email-register .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/*# sourceMappingURL=input.css.map */

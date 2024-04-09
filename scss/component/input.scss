@@ -1,0 +1,51 @@
+@use "../mixin.scss" as *;
+@use "../variable.scss" as *;
+
+.input {
+  position: relative;
+}
+
+input:not([type="checkbox"]) {
+  @include long($clr-neutral-100);
+  border: 2px solid $clr-neutral-800;
+  outline: none;
+}
+
+input#password-login {
+  padding: clamp($size-1, 3vw, $size-2) $size-2;
+  padding-right: $size-3;
+}
+
+input[type="checkbox"] {
+  accent-color: $clr-neutral-800;
+}
+
+.password-login {
+  position: relative;
+}
+
+.ph-ey {
+  position: absolute;
+  bottom: 30%;
+  right: 8px;
+  font-size: $fs-1;
+  cursor: pointer;
+}
+
+.password-register,
+.email-register,
+.username-register {
+  position: relative;
+}
+
+.info {
+  position: absolute;
+  bottom: -15px;
+  left: 5px;
+}
+
+.email-register .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

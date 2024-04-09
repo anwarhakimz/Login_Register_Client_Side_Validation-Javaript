@@ -1,0 +1,17 @@
+{
+  "name": "login-and-register-page-with-api",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "compile:sass": "sass --watch scss:css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "sass": "^1.74.1",
+    "vite": "^5.2.0"
+  }
+}
