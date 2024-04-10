@@ -82,6 +82,16 @@ body {
   text-align: center;
 }
 
+.error-register {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.error-register.active {
+  opacity: 1;
+  pointer-events: none;
+}
+
 label {
   display: block;
 }
@@ -92,7 +102,7 @@ label {
 
 .register {
   margin-top: clamp($size-05, 5vw, $size-3);
-  padding-top: 0.5rem;
+  padding-top: 0.1rem;
 }
 
 .register-form.active {
@@ -101,10 +111,6 @@ label {
 
 .login-form.hidden {
   display: none;
-}
-
-.register-bot {
-  margin-top: 20px;
 }
 
 // utility

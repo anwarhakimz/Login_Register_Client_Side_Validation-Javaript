@@ -84,6 +84,16 @@ body {
   text-align: center;
 }
 
+.error-register {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.error-register.active {
+  opacity: 1;
+  pointer-events: none;
+}
+
 label {
   display: block;
 }
@@ -94,7 +104,7 @@ label {
 
 .register {
   margin-top: clamp(0.25rem, 5vw, 1.5rem);
-  padding-top: 0.5rem;
+  padding-top: 0.1rem;
 }
 
 .register-form.active {
@@ -103,10 +113,6 @@ label {
 
 .login-form.hidden {
   display: none;
-}
-
-.register-bot {
-  margin-top: 20px;
 }
 
 .d-flex-between {
@@ -279,6 +285,7 @@ input[type=checkbox] {
   position: absolute;
   bottom: -15px;
   left: 5px;
+  font-size: 0.75rem;
 }
 
 .email-register .info {
