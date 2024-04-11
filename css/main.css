@@ -285,7 +285,7 @@ input[type=checkbox] {
   position: absolute;
   bottom: -15px;
   left: 5px;
-  font-size: 0.75rem;
+  font-size: clamp(0.5rem, 3vw, 0.75rem);
 }
 
 .email-register .info {

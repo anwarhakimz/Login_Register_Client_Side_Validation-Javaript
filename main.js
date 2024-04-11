@@ -1,3 +1,36 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js";
+import {
+  getDatabase,
+  set,
+  child,
+  ref,
+  get,
+  update,
+} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB1rGARdzOo4JmuvQSn6Xwph6Cammi11J0",
+  authDomain: "login-form-4c7a2.firebaseapp.com",
+  databaseURL: "https://login-form-4c7a2-default-rtdb.firebaseio.com",
+  projectId: "login-form-4c7a2",
+  storageBucket: "login-form-4c7a2.appspot.com",
+  messagingSenderId: "360453255572",
+  appId: "1:360453255572:web:eb939c9b763593d4401f81",
+  measurementId: "G-VJ7XC5GCV1",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const db = getDatabase(app);
+
 const registerINlogin = document.querySelector(".btn-register-login");
 const loginINregister = document.querySelector(".btn-login-register");
 const registerForm = document.querySelector(".register-form");
@@ -51,7 +84,7 @@ Rusername.addEventListener("input", function () {
   const username = Rusername.value.trim();
 
   const usernameRegex =
-    /^(?=.*[!@#$%^&*()_0-9])(?=.*[!@#$%^&*()_a-zA-Z])[a-zA-Z0-9!@#$%^&*()_]+$/;
+    /^(?=.*[!@#$%^&*,.()_0-9])(?=.*[!@#$%^&*()_a-zA-Z])[a-zA-Z0-9!@#$%^&,.()_]+$/;
 
   if (username == "") {
     showerror(Rusername, "Enter Your Username");
@@ -72,15 +105,38 @@ Rusername.addEventListener("input", function () {
     showsuccess(Rusername, "Username is available");
     user = true;
   }
+
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `users`))
+    .then((user) => {
+      if (user.exists()) {
+        user.forEach((user) => {
+          if (user.val().username === username) {
+            showerror(Rusername, "Username already is taken");
+            user = false;
+          }
+        });
+      } else {
+        showsuccess(Rusername, "Username is available");
+        user = true;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 });
 
 Remail.addEventListener("input", function (e) {
   const email = Remail.value.trim();
 
   const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const cek = /@/;
 
   if (email == "") {
     showerror(Remail, "Enter your email addres");
+    mail = false;
+  } else if (!cek.test(email)) {
+    showerror(Remail, "Email address must contain @");
     mail = false;
   } else if (!regex.test(email)) {
     e.target.style.border = "2px solid #202432";
@@ -90,6 +146,25 @@ Remail.addEventListener("input", function (e) {
     showsuccess(Remail, "Email address is valid");
     mail = true;
   }
+
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `users`))
+    .then((user) => {
+      if (user.exists()) {
+        user.forEach((user) => {
+          if (user.val().email === email) {
+            showerror(Remail, "Email already is taken");
+            mail = false;
+          }
+        });
+      } else {
+        showsuccess(Remail, "Email is available");
+        mail = true;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 });
 
 Rpassword.addEventListener("input", function () {
@@ -141,6 +216,23 @@ const errorRegister = document.querySelector(".error-register");
 registerForm.addEventListener("submit", function (e) {
   e.preventDefault();
   const email = Remail.value.trim();
+  const password = Rpassword.value.trim();
+  const username = Rusername.value.trim();
+  const input = registerForm.querySelectorAll("input");
+
+  input.forEach((inp) => {
+    if (inp.value === "") {
+      inp.style.border = "2px solid red";
+      const parent = inp.parentElement;
+      const show = parent.querySelector(".info");
+      const label = parent.querySelector("label");
+      const message = label.innerText.toLowerCase();
+
+      show.innerText = `Enter your ${message}`;
+
+      show.style.color = "red";
+    }
+  });
 
   const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -157,7 +249,25 @@ registerForm.addEventListener("submit", function (e) {
   }
 
   if (user && mail && pass && checkbox.checked) {
-    window.location.href = "https://www.rakamin.com/";
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        set(ref(db, "users/" + user.uid), {
+          username: username,
+          email: email,
+          password: password,
+        });
+        alert("sukses");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        showerror(Rusername, errorCode);
+        user = false;
+        // ..
+      });
   }
 });
 
