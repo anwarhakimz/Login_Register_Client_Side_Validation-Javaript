@@ -211,8 +211,13 @@ forgotFormArea.addEventListener("submit", async function (e) {
     // Mengupdate data pengguna pada path yang ditentukan
     update(userRef, newData)
       .then(() => {
-        swal("Successfully!", "Reset Password", "success").then((value) => {
-          if (value) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Reset Password Successfully",
+          showConfirmButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
             resetInput();
             resetinfo();
             loginform();

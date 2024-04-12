@@ -8,12 +8,14 @@ import {
   get,
   update,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -294,8 +296,13 @@ registerForm.addEventListener("submit", function (e) {
           password: password,
           id: user.uid,
         });
-        swal("Successfully!", "Creating Account", "success").then((value) => {
-          if (value) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Create Account Successfully",
+          showConfirmButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
             resetInput();
             resetinfo();
             loginform();
@@ -305,10 +312,6 @@ registerForm.addEventListener("submit", function (e) {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-
-        showerror(Rusername, errorCode);
-        user = false;
-        // ..
       });
   }
 });
