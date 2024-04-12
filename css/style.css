@@ -79,7 +79,10 @@ body {
 .error-login {
   opacity: 0;
   pointer-events: none;
-  text-align: center;
+}
+
+.error-login.active {
+  opacity: 1;
 }
 
 .error-register {
@@ -102,7 +105,7 @@ label {
 
 .register {
   margin-top: clamp(0.25rem, 5vw, 1.5rem);
-  padding-top: 0.1rem;
+  padding-top: 0.45rem;
 }
 
 .register-form.active {
@@ -111,6 +114,24 @@ label {
 
 .login-form.hidden {
   display: none;
+}
+
+.forgot-form {
+  display: none;
+}
+
+.forgot-form.active {
+  display: block;
+}
+
+.email-forgot,
+.password-forgot,
+.confirm-password-forgot {
+  position: relative;
+}
+
+.info-f {
+  bottom: 0 !important;
 }
 
 .d-flex-between {

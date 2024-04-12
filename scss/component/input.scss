@@ -32,6 +32,14 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+.ph-eyr {
+  position: absolute;
+  bottom: 20%;
+  right: 8px;
+  font-size: $fs-1;
+  cursor: pointer;
+}
+
 .password-register,
 .email-register,
 .username-register {

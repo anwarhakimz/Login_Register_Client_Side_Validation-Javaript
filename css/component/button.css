@@ -35,4 +35,23 @@
   color: #3e79db;
 }
 
+.check-email {
+  padding: 0.5rem 0.5rem;
+  background: linear-gradient(165deg, hsl(206, 91%, 64%), hsl(275, 80%, 49%));
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.btn-login-forgot {
+  color: #3e79db;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=button.css.map */

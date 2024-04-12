@@ -12,6 +12,8 @@ import {
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -30,6 +32,28 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getDatabase(app);
+const dbRef = ref(getDatabase());
+
+const provider = new GoogleAuthProvider();
+
+const google = document.querySelector(".google");
+
+google.addEventListener("click", function () {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+
+      const user = result.user;
+
+      window.location.href = "https://vite.dev";
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+});
 
 const registerINlogin = document.querySelector(".btn-register-login");
 const loginINregister = document.querySelector(".btn-login-register");
@@ -55,20 +79,33 @@ function registerform() {
 }
 
 const passwordLogin = document.getElementById("password-login");
+const passwordRegister = document.getElementById("password-register");
 const eyes = document.querySelector(".ph-eye");
 const eyeslash = document.querySelector(".ph-eye-slash");
 
-eyes.onclick = () => {
-  if (!eyes.classList.contains("ph-eye-slash")) {
-    eyes.classList.remove("ph-eye");
-    eyes.classList.add("ph-eye-slash");
-    passwordLogin.setAttribute("type", "text");
-  } else {
-    eyes.classList.add("ph-eye");
-    eyes.classList.remove("ph-eye-slash");
-    passwordLogin.setAttribute("type", "password");
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("ph-ey")) {
+    if (!eyes.classList.contains("ph-eye-slash")) {
+      eyes.classList.remove("ph-eye");
+      eyes.classList.add("ph-eye-slash");
+      passwordLogin.setAttribute("type", "text");
+    } else {
+      eyes.classList.add("ph-eye");
+      eyes.classList.remove("ph-eye-slash");
+      passwordLogin.setAttribute("type", "password");
+    }
+  } else if (e.target.classList.contains("ph-eyr")) {
+    if (!e.target.classList.contains("ph-eye-slash")) {
+      e.target.classList.remove("ph-eye");
+      e.target.classList.add("ph-eye-slash");
+      passwordRegister.setAttribute("type", "text");
+    } else {
+      e.target.classList.add("ph-eye");
+      e.target.classList.remove("ph-eye-slash");
+      passwordRegister.setAttribute("type", "password");
+    }
   }
-};
+});
 
 // registerForm
 const Rusername = document.getElementById("username-register");
@@ -105,8 +142,6 @@ Rusername.addEventListener("input", function () {
     showsuccess(Rusername, "Username is available");
     user = true;
   }
-
-  const dbRef = ref(getDatabase());
   get(child(dbRef, `users`))
     .then((user) => {
       if (user.exists()) {
@@ -114,11 +149,11 @@ Rusername.addEventListener("input", function () {
           if (user.val().username === username) {
             showerror(Rusername, "Username already is taken");
             user = false;
+          } else {
+            showsuccess(Rusername, "Username is available");
+            user = true;
           }
         });
-      } else {
-        showsuccess(Rusername, "Username is available");
-        user = true;
       }
     })
     .catch((error) => {
@@ -147,7 +182,6 @@ Remail.addEventListener("input", function (e) {
     mail = true;
   }
 
-  const dbRef = ref(getDatabase());
   get(child(dbRef, `users`))
     .then((user) => {
       if (user.exists()) {
@@ -155,11 +189,12 @@ Remail.addEventListener("input", function (e) {
           if (user.val().email === email) {
             showerror(Remail, "Email already is taken");
             mail = false;
+          } else {
+            showsuccess(Remail, "Email is available");
+            mail = true;
           }
         });
       } else {
-        showsuccess(Remail, "Email is available");
-        mail = true;
       }
     })
     .catch((error) => {
@@ -257,8 +292,15 @@ registerForm.addEventListener("submit", function (e) {
           username: username,
           email: email,
           password: password,
+          id: user.uid,
         });
-        alert("sukses");
+        swal("Successfully!", "Creating Account", "success").then((value) => {
+          if (value) {
+            resetInput();
+            resetinfo();
+            loginform();
+          }
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -271,6 +313,72 @@ registerForm.addEventListener("submit", function (e) {
   }
 });
 
+const errorLogin = document.querySelector(".error-login");
+const loginformarea = document.getElementById("login-form");
+const Lusername = document.getElementById("username-login");
+const Lpassword = document.getElementById("password-login");
+
+Lusername.addEventListener("input", function () {
+  Lusername.style.border = "2px solid  #202432";
+  errorLogin.classList.remove("active");
+  let usernameLogin = Lusername.value.trim();
+  if (remember.checked) {
+    let check = true;
+    addLS(usernameLogin, check);
+  } else {
+    localStorage.removeItem("remember");
+    localStorage.removeItem("username");
+  }
+});
+
+Lpassword.addEventListener("input", function () {
+  Lpassword.style.border = "2px solid  #202432";
+  errorLogin.classList.remove("active");
+});
+
+loginformarea.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const username = Lusername.value.trim();
+  const password = Lpassword.value.trim();
+  const inputlogin = loginformarea.querySelectorAll("input");
+
+  get(child(dbRef, `users`))
+    .then((user) => {
+      let match = false;
+      user.forEach((user) => {
+        const data = user.val();
+
+        if (data.username == username && data.password == password) {
+          match = true;
+        } else {
+          match = false;
+        }
+      });
+
+      if (match) {
+        errorLogin.classList.remove("active");
+        window.location.href = "https://vitejs.dev";
+        return;
+      } else {
+        errorLogin.classList.add("active");
+        errorLogin.innerText = "Wrong username and password";
+      }
+
+      inputlogin.forEach((inp) => {
+        if (inp.value.trim() === "") {
+          inp.style.border = "2px solid red";
+          errorLogin.innerText = "Enter username or password";
+          errorLogin.classList.add("active");
+        } else {
+          inp.style.border = "2px solid #202432";
+        }
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
+
 function showerror(input, message) {
   input.style.border = "2px solid red";
   const parent = input.parentElement;
@@ -280,6 +388,7 @@ function showerror(input, message) {
 
   show.style.color = "red";
 }
+
 function showsuccess(input, message) {
   input.style.border = "2px solid green";
   const parent = input.parentElement;
@@ -302,4 +411,31 @@ function resetinfo() {
   Allinfo.forEach((info) => {
     info.innerText = "";
   });
+}
+
+const remember = document.getElementById("Remember");
+
+document.addEventListener("DOMContentLoaded", function () {
+  const nameLS = JSON.parse(localStorage.getItem("username"));
+  const checkLS = JSON.parse(localStorage.getItem("remember"));
+
+  nameLS ? (Lusername.value = nameLS.username) : Lusername.value == "";
+
+  checkLS ? (remember.checked = true) : (remember.checked = false);
+});
+
+remember.onclick = () => {
+  let usernameLogin = Lusername.value.trim();
+  if (remember.checked) {
+    let check = true;
+    addLS(usernameLogin, check);
+  } else {
+    localStorage.removeItem("remember");
+    localStorage.removeItem("username");
+  }
+};
+
+function addLS(username, check) {
+  localStorage.setItem("username", JSON.stringify({ username }));
+  localStorage.setItem("remember", JSON.stringify({ check }));
 }

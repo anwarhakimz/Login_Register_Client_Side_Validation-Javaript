@@ -7,6 +7,7 @@
     <title>Welcome To Vite</title>
     <link rel="stylesheet" href="css/main.css" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body class="bg-gradient">
     <main>
@@ -56,13 +57,13 @@
                   <i class="ph ph-ey ph-eye"></i>
                 </div>
                 <div class="d-flex">
-                  <input type="checkbox" />
+                  <input type="checkbox" id="Remember" />
                   <span class="fw-reguler">Remember Me</span>
                 </div>
 
                 <div class="padding-block">
                   <small
-                    class="error-login clr-danger padding-bottom fw-semibold"
+                    class="error-login clr-danger padding-bottom fw-semibold text-center"
                     >Wrong username and password</small
                   >
                   <button class="btn login-submit clr-neutral-100 fw-semibold">
@@ -119,9 +120,10 @@
                   <input
                     name="password-register"
                     id="password-register"
-                    type="text"
+                    type="password"
                     placeholder="Enter Your Password"
                   />
+                  <i class="ph ph-eyr ph-eye"></i>
                   <small class="info"></small>
                 </div>
                 <div class="d-flex padding-top">
@@ -145,10 +147,89 @@
                 </div>
               </form>
             </div>
+            <div class="forgot-form">
+              <h1 class="padding-bottom fw-semibold clr-neutral-800">
+                Forgot Pasword
+              </h1>
+              <p class="padding-block">
+                Enter your email address and check your email is valid or not
+                valid
+              </p>
+
+              <form class="forgot" id="forgot-form">
+                <div class="email-forgot">
+                  <label
+                    class="padding-bottom fw-semibold select-none"
+                    for="email-forgot"
+                    >Email</label
+                  >
+                  <input
+                    name="email-forgot"
+                    id="email-forgot"
+                    type="text"
+                    placeholder="Enter Your email"
+                  />
+                  <small class="info"></small>
+                </div>
+                <div class="d-flex padding-top">
+                  <a class="check-email fw-reguler select-none" for="checkbox"
+                    >Check Email</a
+                  >
+                </div>
+
+                <div class="password-forgot padding-block">
+                  <label
+                    class="padding-bottom fw-semibold select-none"
+                    for="password-forgot"
+                    >New password</label
+                  >
+                  <input
+                    name="password-forgot"
+                    id="password-forgot"
+                    type="text"
+                    placeholder="Enter the new Password"
+                    disabled
+                  />
+                  <small class="info info-f"></small>
+                </div>
+                <div class="confirm-password-forgot padding select-none">
+                  <label
+                    class="padding-bottom fw-semibold"
+                    for="confirm-password-forgot"
+                    >Confirm Password</label
+                  >
+                  <input
+                    name="confirm-password-forgot"
+                    id="confirm-password-forgot"
+                    type="password"
+                    placeholder="Enter the same password"
+                    disabled
+                  />
+
+                  <small class="info"></small>
+                </div>
+
+                <div class="padding-block">
+                  <small
+                    class="error-register clr-danger padding-bottom fw-semibold text-center"
+                    >Check Agree with terms and conditions</small
+                  >
+                  <button class="btn login-submit clr-neutral-100 fw-semibold">
+                    Reset password
+                  </button>
+                  <small class="text-center padding-block fw-semibold"
+                    >Remember your account?
+                    <a class="btn-login-forgot">Login!</a></small
+                  >
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </main>
+
     <script type="module" src="main.js" defer></script>
+    <script type="module" src="forgot-password.js" defer></script>
   </body>
 </html>

@@ -27,3 +27,22 @@
   cursor: pointer;
   color: #3e79db;
 }
+
+.check-email {
+  padding: 0.5rem 0.5rem;
+  background: $clr-gradient;
+  cursor: pointer;
+  color: white;
+  font-weight: $fw-semi-bold;
+  font-size: 12px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.btn-login-forgot {
+  color: #3e79db;
+  cursor: pointer;
+}

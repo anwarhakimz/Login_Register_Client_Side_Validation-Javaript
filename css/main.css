@@ -81,7 +81,10 @@ body {
 .error-login {
   opacity: 0;
   pointer-events: none;
-  text-align: center;
+}
+
+.error-login.active {
+  opacity: 1;
 }
 
 .error-register {
@@ -104,7 +107,7 @@ label {
 
 .register {
   margin-top: clamp(0.25rem, 5vw, 1.5rem);
-  padding-top: 0.1rem;
+  padding-top: 0.45rem;
 }
 
 .register-form.active {
@@ -113,6 +116,24 @@ label {
 
 .login-form.hidden {
   display: none;
+}
+
+.forgot-form {
+  display: none;
+}
+
+.forgot-form.active {
+  display: block;
+}
+
+.email-forgot,
+.password-forgot,
+.confirm-password-forgot {
+  position: relative;
+}
+
+.info-f {
+  bottom: 0 !important;
 }
 
 .d-flex-between {
@@ -237,6 +258,25 @@ label {
   color: #3e79db;
 }
 
+.check-email {
+  padding: 0.5rem 0.5rem;
+  background: linear-gradient(165deg, hsl(206, 91%, 64%), hsl(275, 80%, 49%));
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.btn-login-forgot {
+  color: #3e79db;
+  cursor: pointer;
+}
+
 .input {
   position: relative;
 }
@@ -270,6 +310,14 @@ input[type=checkbox] {
 .ph-ey {
   position: absolute;
   bottom: 30%;
+  right: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.ph-eyr {
+  position: absolute;
+  bottom: 20%;
   right: 8px;
   font-size: 1rem;
   cursor: pointer;
